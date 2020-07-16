@@ -9,7 +9,7 @@
 		0px 2px 4px rgba(60, 60, 60, 0.1);
 	border-radius: 4px;
 	padding: 40px 80px;
-	margin: 20px 300px;
+	margin: 40px 300px;
 	border: black 1px solid;
 }
 
@@ -17,7 +17,7 @@
 	opacity: 0;
 	display: flex;
 	position: fixed;
-	bottom: 50px;
+	bottom: 15px;
 	left: 50%;
 	transform: translateX(-50%);
 	transition: opacity .3s ease-in;

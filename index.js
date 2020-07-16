@@ -35,9 +35,9 @@ app.use(Express.static(publicDirectoryPath))
    
       if (err) throw err;
       console.log("Number of documents inserted: " + res.insertedCount);
-    })  */
+    })  
 
-    
+    */
     
    app.use((req,res,next) => {
    
@@ -52,37 +52,12 @@ app.use(Express.static(publicDirectoryPath))
 
      next()
    })
-   
-    
+
    app.get("/data", (request, response) => {
-     
-   //response.send()
-});
-     /*
-    app.get("/data", (request, response) => {
-     
-      db.collection("users").find({}).limit(10).skip(10).toArray((error, result) => {
-          if(error) {
-              return response.status(500).send(error);
-          }
-          response.send(result);
-      });
+    
   });
-
-  
-*/
-  
-
-  //db.collection("users").find({}).limit(5).skip(0).toArray((error, result) => {
-  
-
    
-  
-
-
-
-
-
+   
 
 
 
