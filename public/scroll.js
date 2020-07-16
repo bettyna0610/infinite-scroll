@@ -22,7 +22,7 @@ const showLoading = () => {
    // setTimeout(getData, 1000)
 }
 
-fetch('http://localhost:3000/data').then((response) => {
+fetch('http://localhost:3000/data?page=2&limit=10').then((response) => {
 response.json().then((data) => {
   
 if (data.error) {

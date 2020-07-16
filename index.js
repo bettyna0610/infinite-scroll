@@ -31,7 +31,6 @@ app.use(Express.static(publicDirectoryPath))
     console.log('Connected to databaseName')
 
     /*
-
     db.collection("users").insertMany(json, function(err, res) {
    
       if (err) throw err;
@@ -39,14 +38,30 @@ app.use(Express.static(publicDirectoryPath))
     })  */
 
     
-
+    
+   app.use((req,res,next) => {
    
+   const page = req.query.page
+   const limit = req.query.limit
+   const skip = page*limit
 
- 
-  
+   db.collection("users").find({}).limit(10).skip(skip).toArray((error, result) => {
+    
+    res.send(result);
+    });
+
+     next()
+   })
+   
+    
+   app.get("/data", (request, response) => {
      
+   //response.send()
+});
+     /*
     app.get("/data", (request, response) => {
-      db.collection("users").find({}).toArray((error, result) => {
+     
+      db.collection("users").find({}).limit(10).skip(10).toArray((error, result) => {
           if(error) {
               return response.status(500).send(error);
           }
@@ -54,13 +69,14 @@ app.use(Express.static(publicDirectoryPath))
       });
   });
 
-  const loggerMiddleware = (req, res, next) => {
-    console.log('New request to: ' + req.method + ' ' + req.path)
-    next()
-    }
+  
+*/
+  
 
-    app.use(loggerMiddleware)
+  //db.collection("users").find({}).limit(5).skip(0).toArray((error, result) => {
+  
 
+   
   
 
 
@@ -76,4 +92,3 @@ app.listen(3000, () => {
 
 
   })
-
