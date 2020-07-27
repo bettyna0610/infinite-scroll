@@ -8,40 +8,43 @@ const loading = document.querySelector('.loading')
 
 
 const getData = () => {
-    fetch(`http://localhost:3000/data?page=${page}&limit=10`).then((response) => {
+    fetch(`http://localhost:3000/data?page=${page}&limit=10`)
+    .then((response) => {
         response.json().then((data) => {
-          
-        if (data.error) {
-        console.log(data.error)
-        } else {
-        
+       const dataArray = data.data
+        console.log(dataArray)
+        if (dataArray.error) {
+            console.log(dataArray.error)
+            } else {
             
-          
-          
-          data.map((data) => {
+                
              
-                const element = document.createElement('div')
-                element.classList.add('data')
-                element.innerHTML=
-                `<p>${data.last_name}
-                ${data.first_name}</p>
-                <p> ${data.email}</p>`
               
-                container.appendChild(element)
+              dataArray.map((data) => {
+              
+                    const element = document.createElement('div')
+                    console.log(element)
+                    element.classList.add('data')
+                    console.log(element)
+                    element.innerHTML=
+                    `<p>${data.last_name}
+                    ${data.first_name}</p>
+                    <p> ${data.email}</p>`
+                  
+                    container.appendChild(element)
+                
+              })
+    
+              //console.log(data.length)
             
-          })
-
-          console.log(data.length)
-        
-          loading.classList.remove('show')
-          
-          
-           
-        }
-        })
+              loading.classList.remove('show')
+              
+              
+               
+            }
         })
         
-        
+    }) 
 }
 
 const firstPage = () => {
@@ -70,7 +73,7 @@ const showLoading = () => {
     }
     
     
-   setTimeout(nextPage, 3000)
+   setTimeout(nextPage, 2000)
 }
 
 

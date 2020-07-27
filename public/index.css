@@ -1,6 +1,6 @@
 .container {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 400px;
 }
 
 .data {
@@ -9,7 +9,7 @@
 		0px 2px 4px rgba(60, 60, 60, 0.1);
 	border-radius: 4px;
 	padding: 40px 80px;
-	margin: 40px 300px;
+	margin: 40px 350px;
 	border: black 1px solid;
 }
 
@@ -45,3 +45,11 @@
 		transform: translateY(-10px);
 	}
 }
+
+@media screen and (max-width: 350px) {
+	.data {
+		margin: 40px 30px;
+		padding:40px 20px
+	}
+
+  }

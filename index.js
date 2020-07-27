@@ -36,28 +36,40 @@ app.use(Express.static(publicDirectoryPath))
       if (err) throw err;
       console.log("Number of documents inserted: " + res.insertedCount);
     })  
-
-    */
+*/
     
+    /*
    app.use((req,res,next) => {
    
    const page = req.query.page
-   const limit = req.query.limit
+   const limit = 10
    const skip = page*limit
 
-   db.collection("users").find({}).limit(10).skip(skip).toArray((error, result) => {
+   db.collection("users").find().limit(limit).skip(skip).toArray((error, result) => {
     
     res.send(result);
     });
 
      next()
-   })
+   })*/
 
-   app.get("/data", (request, response) => {
-    
+   app.get("/data", (req, res) => {
+    const page = req.query.page
+    const limit = 10
+    const skip = page*limit
+ 
+    db.collection("users").find().limit(limit).skip(skip).toArray().then(docs => {
+     console.log("docs from db", docs);
+      res.status(200).json({
+        data: docs
+      });
+      //console.log(docs.data)
+     });
   });
    
    
+
+   //db.collection("users").deleteMany({})
 
 
 
